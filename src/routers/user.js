@@ -72,7 +72,7 @@ router.get("/users/me", auth, async (req, res) => {
 router.post(
   "/users/me/avatar",
   auth,
-  upload.single("upload"),
+  upload.single("avatar"),
   async (req, res) => {
     const buffer = await sharp(req.file.buffer)
       .resize({ width: 250, height: 250 })
@@ -108,6 +108,7 @@ router.patch("/users/me", auth, async (req, res) => {
     res.status(400).send(error);
   }
 });
+
 
 router.delete("/users/me", auth, async (req, res) => {
   try {
